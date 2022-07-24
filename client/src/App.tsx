@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import Paper from "@mui/material/Paper";
@@ -12,7 +12,7 @@ import PersonalInfo from "./components/PersonalInfo";
 
 const App = () => {
   const steps = ["Personal Informations", "Work experiance", "Create an ad"];
-
+  const [activeStep, setActiveStep] = useState(0);
   return (
     <>
       <div className="mt-8 lg:text-center">
@@ -22,7 +22,7 @@ const App = () => {
         <p className="mt-2 mb-12 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           Let's create a resume for you!
         </p>
-        <Stepper activeStep={0} alternativeLabel>
+        <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
@@ -34,7 +34,10 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<PersonalInfo />} />
-            <Route path="/workexp" element={<WorkExperiance />} />
+            <Route
+              path="/workexp"
+              element={<WorkExperiance activeStep={activeStep} />}
+            />
           </Routes>
         </BrowserRouter>
       </Paper>

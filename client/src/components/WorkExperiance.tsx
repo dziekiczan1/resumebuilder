@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const WorkExperiance = () => {
+const WorkExperiance = ({ activeStep }: any) => {
   const navigate = useNavigate();
   return (
     <div>
       WorkExperiance{" "}
       <button className="pl-8" onClick={() => navigate(-1)}>
-        Navigate
+        Navigate{activeStep}
       </button>
     </div>
   );
