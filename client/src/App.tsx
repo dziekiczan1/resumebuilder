@@ -1,9 +1,14 @@
 import React from "react";
 import "./App.css";
-import ResumeForm from "./components/ResumeForm";
+
+import Paper from "@mui/material/Paper";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import WorkExperiance from "./components/WorkExperiance";
+import PersonalInfo from "./components/PersonalInfo";
 
 const App = () => {
   const steps = ["Personal Informations", "Work experiance", "Create an ad"];
@@ -25,7 +30,14 @@ const App = () => {
           ))}
         </Stepper>
       </div>
-      <ResumeForm />
+      <Paper elevation={3} className="m-8 p-6">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<PersonalInfo />} />
+            <Route path="/workexp" element={<WorkExperiance />} />
+          </Routes>
+        </BrowserRouter>
+      </Paper>
     </>
   );
 };
