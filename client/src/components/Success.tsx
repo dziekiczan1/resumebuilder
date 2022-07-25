@@ -3,11 +3,14 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import saveAs from "file-saver";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setzero } from "../services/stepSlice";
 
 const Success = () => {
   const dataInfo = useSelector((state: any) => state);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const nextStep = (e: any) => {
     e.preventDefault();
 
@@ -25,24 +28,38 @@ const Success = () => {
 
         saveAs(pdfBlob, "Resume.pdf");
       });
-
-    e.target.reset();
   };
 
   return (
-    <div>
-      <Button
-        variant="contained"
-        size="large"
-        type="button"
-        onClick={() => navigate("/")}
-      >
-        Go Back
-      </Button>
-      <Button variant="contained" size="large" type="button" onClick={nextStep}>
-        Finish
-      </Button>
-    </div>
+    <>
+      <p className="mt-2 mb-2 text-lg text-center leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
+        Success!
+      </p>
+      <p className="text-center mb-8">Your Resume is now ready to download.</p>
+
+      <div className="flex justify-center items-center gap-12">
+        <Button
+          variant="contained"
+          size="large"
+          type="button"
+          onClick={() => {
+            navigate("/");
+            dispatch(setzero());
+          }}
+        >
+          Start Over
+        </Button>
+        <Button
+          variant="contained"
+          size="large"
+          type="button"
+          color="success"
+          onClick={nextStep}
+        >
+          Download Resume
+        </Button>
+      </div>
+    </>
   );
 };
 

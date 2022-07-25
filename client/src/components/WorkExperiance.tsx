@@ -15,7 +15,7 @@ const WorkExperiance = () => {
     { company: "", yearstart: "", yearend: "", position: "", description: "" },
   ]);
 
-  const handleClick = (e: any) => {
+  const handleClick = () => {
     navigate("/education");
     dispatch(addWorkExp(workList));
     dispatch(increment());
@@ -54,8 +54,8 @@ const WorkExperiance = () => {
       </p>
       <form onSubmit={handleClick}>
         {workList.map((singleWork: any, index: number) => (
-          <>
-            <div key={index} className="flex">
+          <div key={index}>
+            <div className="flex flex-col md:flex-row">
               <div className="w-3/4 flex flex-col justify-center items-center gap-8 my-8">
                 <div className="w-full flex flex-row justify-center items-center">
                   <TextField
@@ -70,7 +70,7 @@ const WorkExperiance = () => {
                     onChange={(e) => handleWorkChange(e, index)}
                   />
                 </div>
-                <div className="w-full flex flex-row gap-12 justify-center items-center">
+                <div className="w-full flex flex-col md:flex-row gap-12 justify-center items-center">
                   <TextField
                     required
                     name="position"
@@ -116,7 +116,7 @@ const WorkExperiance = () => {
                   />
                 </div>
               </div>
-              <div className="w-1/4 flex flex-row gap-8 justify-center items-center">
+              <div className="w-full md:w-1/4 flex flex-row gap-8 justify-center items-center">
                 {workList.length - 1 === index && workList.length < 4 && (
                   <Button
                     variant="contained"
@@ -145,7 +145,7 @@ const WorkExperiance = () => {
               </div>
             </div>
             <hr className="mx-auto my-8 w-7/8" />
-          </>
+          </div>
         ))}
         <div className="mt-8 gap-12 flex justify-center items-center">
           <Button

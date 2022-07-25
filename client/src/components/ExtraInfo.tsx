@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { useDispatch, useSelector } from "react-redux";
+import { increment, decrement } from "../services/stepSlice";
 import { addExtraInfo } from "../services/extraInfoSlice";
 import Button from "@mui/material/Button";
 
@@ -15,12 +16,11 @@ const ExtraInfo = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const nextStep = () => {
+  const handleClick = () => {
     dispatch(addExtraInfo(extraInfo));
     navigate("/success");
+    dispatch(increment());
   };
-
-  console.log(extraInfo);
 
   return (
     <>
@@ -28,7 +28,7 @@ const ExtraInfo = () => {
         Extra Informations
       </p>
 
-      <form onSubmit={nextStep}>
+      <form onSubmit={handleClick}>
         <div className="flex flex-col flex-wrap justify-center items-center gap-8">
           <TextField
             required
@@ -90,9 +90,20 @@ const ExtraInfo = () => {
             }
           />
         </div>
-        <div className="mt-8 flex justify-center items-center">
+        <div className="mt-8 gap-12 flex justify-center items-center">
+          <Button
+            variant="contained"
+            size="large"
+            type="button"
+            onClick={() => {
+              navigate(-1);
+              dispatch(decrement());
+            }}
+          >
+            Back
+          </Button>
           <Button variant="contained" size="large" type="submit">
-            Finish
+            Next
           </Button>
         </div>
       </form>

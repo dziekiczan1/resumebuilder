@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,10 @@ const PersonalInfo = () => {
   });
   const personalInfo = useSelector((state: any) => state.resume.profileSection);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setName(name);
+  }, []);
 
   const handleClick = (e: any) => {
     navigate("/workexp");

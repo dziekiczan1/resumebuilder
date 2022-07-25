@@ -24,7 +24,7 @@ const App = () => {
   const activeStep = useSelector((state: any) => state.step.activeStep);
   return (
     <>
-      <div className="mt-8 lg:text-center">
+      <div className="mt-8 text-center">
         <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
           Resume builder
         </h2>
