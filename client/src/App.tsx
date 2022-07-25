@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./App.css";
 
 import Paper from "@mui/material/Paper";
@@ -12,7 +13,8 @@ import PersonalInfo from "./components/PersonalInfo";
 
 const App = () => {
   const steps = ["Personal Informations", "Work experiance", "Create an ad"];
-  const [activeStep, setActiveStep] = useState(0);
+  const activeStep = useSelector((state: any) => state.step.activeStep);
+  console.log(activeStep);
   return (
     <>
       <div className="mt-8 lg:text-center">
@@ -34,10 +36,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<PersonalInfo />} />
-            <Route
-              path="/workexp"
-              element={<WorkExperiance activeStep={activeStep} />}
-            />
+            <Route path="/workexp" element={<WorkExperiance />} />
           </Routes>
         </BrowserRouter>
       </Paper>

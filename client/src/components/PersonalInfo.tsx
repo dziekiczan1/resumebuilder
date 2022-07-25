@@ -1,38 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import saveAs from "file-saver";
 import TextField from "@mui/material/TextField";
+import { useDispatch, useSelector } from "react-redux";
+import { addProfileSection } from "../services/resumeSlice";
+import { increment } from "../services/stepSlice";
+import Button from "@mui/material/Button";
 
 const PersonalInfo = () => {
   const navigate = useNavigate();
   const [name, setName] = useState({
-    name: "Name",
-    surname: "Surname",
-    mobile: "Mobile number",
-    city: "City",
-    github: "Github profile",
+    name: "",
+    surname: "",
+    mobile: "",
+    city: "",
+    birthday: "",
+    github: "",
   });
+  const personalInfo = useSelector((state: any) => state.resume.profileSection);
+  const dispatch = useDispatch();
 
-  const nextStep = (e: any) => {
-    e.preventDefault();
-
-    const data = { name: name };
-
-    axios
-      .post("http://localhost:5000/resume-createpdf", data)
-      .then(() =>
-        axios.get("http://localhost:5000/resume-fetchpdf", {
-          responseType: "blob",
-        })
-      )
-      .then((res) => {
-        const pdfBlob = new Blob([res.data], { type: "application/pdf" });
-
-        saveAs(pdfBlob, "Resume.pdf");
-      });
-
-    e.target.reset();
+  const handleClick = (e: any) => {
+    navigate("/workexp");
+    dispatch(addProfileSection(name));
+    dispatch(increment());
   };
 
   return (
@@ -41,53 +31,61 @@ const PersonalInfo = () => {
         Personal Informations
       </p>
 
-      <form onSubmit={nextStep}>
-        <TextField
-          required
-          id="outlined-required"
-          label="First Name"
-          defaultValue={name.name}
-          onChange={(e) => setName({ ...name, name: e.target.value })}
-        />
+      <form onSubmit={handleClick}>
+        <div className="flex flex-row flex-wrap justify-center items-center gap-8">
+          <TextField
+            required
+            id="outlined-required"
+            label="First Name"
+            defaultValue={personalInfo.name}
+            onChange={(e) => setName({ ...name, name: e.target.value })}
+          />
 
-        <TextField
-          required
-          id="outlined-required"
-          label="Last Name"
-          defaultValue={name.surname}
-          onChange={(e) => setName({ ...name, surname: e.target.value })}
-        />
+          <TextField
+            required
+            id="outlined-required"
+            label="Last Name"
+            defaultValue={personalInfo.surname}
+            onChange={(e) => setName({ ...name, surname: e.target.value })}
+          />
 
-        <TextField
-          required
-          id="outlined-required"
-          label="Mobile"
-          defaultValue={name.mobile}
-          onChange={(e) => setName({ ...name, mobile: e.target.value })}
-        />
+          <TextField
+            required
+            id="outlined-required"
+            label="Mobile"
+            defaultValue={personalInfo.mobile}
+            onChange={(e) => setName({ ...name, mobile: e.target.value })}
+          />
 
-        <TextField
-          required
-          id="outlined-required"
-          label="City"
-          defaultValue={name.city}
-          onChange={(e) => setName({ ...name, city: e.target.value })}
-        />
+          <TextField
+            id="outlined-required"
+            label="City"
+            defaultValue={personalInfo.city}
+            onChange={(e) => setName({ ...name, city: e.target.value })}
+          />
 
-        <TextField
-          required
-          id="outlined-required"
-          label="Github"
-          defaultValue={name.github}
-          onChange={(e) => setName({ ...name, github: e.target.value })}
-        />
-        <div>
-          <button type="submit">Download Resume</button>
+          <TextField
+            required
+            id="outlined-required"
+            label="Birthday"
+            type="date"
+            InputLabelProps={{ shrink: true }}
+            onChange={(e) => setName({ ...name, github: e.target.value })}
+          />
+
+          <TextField
+            id="outlined-required"
+            label="Github"
+            defaultValue={personalInfo.github}
+            onChange={(e) => setName({ ...name, github: e.target.value })}
+          />
+        </div>
+        <div className="mt-8 flex justify-center items-center">
+          <Button variant="contained" size="large" type="submit">
+            Next
+          </Button>
         </div>
       </form>
-      <button className="pl-8" onClick={() => navigate("/workexp")}>
-        Navigate
-      </button>
     </>
   );
 };
