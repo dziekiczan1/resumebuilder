@@ -3,6 +3,7 @@ import resumeSliceReducer from "../services/resumeSlice";
 import stepSliceReducer from "../services/stepSlice";
 import workExpReducer from "../services/workexpSlice";
 import educationReducer from "../services/educationSlice";
+import extraReducer from "../services/extraInfoSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     step: stepSliceReducer,
     workexp: workExpReducer,
     education: educationReducer,
+    extra: extraReducer,
   },
 });
