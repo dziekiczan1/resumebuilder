@@ -61,7 +61,7 @@ const Education = () => {
       <form onSubmit={handleClick}>
         {schoolList.map((singleSchool: any, index: number) => (
           <div key={index}>
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row justify-center items-center">
               <div className="w-3/4 flex flex-col justify-center items-center gap-8 my-8">
                 <div className="w-full flex flex-row justify-center items-center">
                   <TextField

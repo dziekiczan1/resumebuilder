@@ -21,7 +21,7 @@ const PersonalInfo = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setName(name);
+    setName(personalInfo);
   }, []);
 
   const handleClick = (e: any) => {

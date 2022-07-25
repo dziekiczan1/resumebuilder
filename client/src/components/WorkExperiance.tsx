@@ -55,7 +55,7 @@ const WorkExperiance = () => {
       <form onSubmit={handleClick}>
         {workList.map((singleWork: any, index: number) => (
           <div key={index}>
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row justify-center items-center">
               <div className="w-3/4 flex flex-col justify-center items-center gap-8 my-8">
                 <div className="w-full flex flex-row justify-center items-center">
                   <TextField
@@ -116,7 +116,7 @@ const WorkExperiance = () => {
                   />
                 </div>
               </div>
-              <div className="w-full md:w-1/4 flex flex-row gap-8 justify-center items-center">
+              <div className="w-full md:w-1/4  flex flex-row gap-8 justify-center items-center">
                 {workList.length - 1 === index && workList.length < 4 && (
                   <Button
                     variant="contained"
