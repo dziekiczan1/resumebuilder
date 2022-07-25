@@ -120,7 +120,7 @@ const WorkExperiance = () => {
                 {workList.length - 1 === index && workList.length < 4 && (
                   <Button
                     variant="contained"
-                    size="small"
+                    size="medium"
                     type="button"
                     color="success"
                     onClick={handleWorkAdd}
@@ -133,7 +133,7 @@ const WorkExperiance = () => {
                 {workList.length !== 1 && (
                   <Button
                     variant="contained"
-                    size="small"
+                    size="medium"
                     type="button"
                     color="error"
                     onClick={() => handleWorkRemove(index)}

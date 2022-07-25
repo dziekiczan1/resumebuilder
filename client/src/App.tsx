@@ -21,7 +21,6 @@ const App = () => {
     "Extra Info",
   ];
   const activeStep = useSelector((state: any) => state.step.activeStep);
-  console.log(activeStep);
   return (
     <>
       <div className="mt-8 lg:text-center">
