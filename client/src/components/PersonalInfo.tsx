@@ -24,7 +24,7 @@ const PersonalInfo = () => {
     dispatch(addProfileSection(name));
     dispatch(increment());
   };
-
+  console.log(personalInfo);
   return (
     <>
       <p className="mt-2 mb-12 text-lg leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -70,7 +70,7 @@ const PersonalInfo = () => {
             label="Birthday"
             type="date"
             InputLabelProps={{ shrink: true }}
-            onChange={(e) => setName({ ...name, github: e.target.value })}
+            onChange={(e) => setName({ ...name, birthday: e.target.value })}
           />
 
           <TextField
