@@ -12,6 +12,7 @@ import WorkExperiance from "./components/WorkExperiance";
 import PersonalInfo from "./components/PersonalInfo";
 import Education from "./components/Education";
 import ExtraInfo from "./components/ExtraInfo";
+import Success from "./components/Success";
 
 const App = () => {
   const steps = [
@@ -45,6 +46,7 @@ const App = () => {
             <Route path="/workexp" element={<WorkExperiance />} />
             <Route path="/education" element={<Education />} />
             <Route path="/extra" element={<ExtraInfo />} />
+            <Route path="/success" element={<Success />} />
           </Routes>
         </BrowserRouter>
       </Paper>

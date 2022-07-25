@@ -3,13 +3,9 @@ import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { useDispatch, useSelector } from "react-redux";
 import { addExtraInfo } from "../services/extraInfoSlice";
-import { increment } from "../services/stepSlice";
 import Button from "@mui/material/Button";
-import axios from "axios";
-import saveAs from "file-saver";
 
 const ExtraInfo = () => {
-  const dataInfo = useSelector((state: any) => state);
   const [extraInfo, setExtraInfo] = useState<any>({
     language: [],
     techstack: {},
@@ -19,27 +15,9 @@ const ExtraInfo = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const nextStep = (e: any) => {
+  const nextStep = () => {
     dispatch(addExtraInfo(extraInfo));
-
-    e.preventDefault();
-
-    const data = dataInfo;
-
-    axios
-      .post("http://localhost:5000/resume-createpdf", data)
-      .then(() =>
-        axios.get("http://localhost:5000/resume-fetchpdf", {
-          responseType: "blob",
-        })
-      )
-      .then((res) => {
-        const pdfBlob = new Blob([res.data], { type: "application/pdf" });
-
-        saveAs(pdfBlob, "Resume.pdf");
-      });
-
-    e.target.reset();
+    navigate("/success");
   };
 
   console.log(extraInfo);

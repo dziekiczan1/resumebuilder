@@ -12,6 +12,7 @@ const PersonalInfo = () => {
     name: "",
     surname: "",
     mobile: "",
+    email: "",
     city: "",
     birthday: "",
     github: "",
@@ -35,6 +36,7 @@ const PersonalInfo = () => {
         <div className="flex flex-row flex-wrap justify-center items-center gap-8">
           <TextField
             required
+            name="name"
             id="outlined-required"
             label="First Name"
             defaultValue={personalInfo.name}
@@ -43,6 +45,7 @@ const PersonalInfo = () => {
 
           <TextField
             required
+            name="surname"
             id="outlined-required"
             label="Last Name"
             defaultValue={personalInfo.surname}
@@ -51,6 +54,7 @@ const PersonalInfo = () => {
 
           <TextField
             required
+            name="mobile"
             id="outlined-required"
             label="Mobile"
             defaultValue={personalInfo.mobile}
@@ -58,6 +62,16 @@ const PersonalInfo = () => {
           />
 
           <TextField
+            required
+            name="email"
+            id="outlined-required"
+            label="Email address"
+            defaultValue={personalInfo.email}
+            onChange={(e) => setName({ ...name, email: e.target.value })}
+          />
+
+          <TextField
+            name="city"
             id="outlined-required"
             label="City"
             defaultValue={personalInfo.city}
@@ -66,6 +80,7 @@ const PersonalInfo = () => {
 
           <TextField
             required
+            name="birthday"
             id="outlined-required"
             label="Birthday"
             type="date"
@@ -74,6 +89,7 @@ const PersonalInfo = () => {
           />
 
           <TextField
+            name="github"
             id="outlined-required"
             label="Github"
             defaultValue={personalInfo.github}

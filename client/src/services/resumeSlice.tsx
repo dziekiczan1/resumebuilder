@@ -7,6 +7,7 @@ export const profileInfoSlice = createSlice({
       name: "",
       surname: "",
       mobile: "",
+      email: "",
       city: "",
       birthday: "",
       github: "",
