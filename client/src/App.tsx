@@ -10,9 +10,16 @@ import StepLabel from "@mui/material/StepLabel";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WorkExperiance from "./components/WorkExperiance";
 import PersonalInfo from "./components/PersonalInfo";
+import Education from "./components/Education";
+import ExtraInfo from "./components/ExtraInfo";
 
 const App = () => {
-  const steps = ["Personal Informations", "Work experiance", "Create an ad"];
+  const steps = [
+    "Personal Informations",
+    "Work experiance",
+    "Education",
+    "Extra Info",
+  ];
   const activeStep = useSelector((state: any) => state.step.activeStep);
   console.log(activeStep);
   return (
@@ -37,6 +44,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<PersonalInfo />} />
             <Route path="/workexp" element={<WorkExperiance />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/extra" element={<ExtraInfo />} />
           </Routes>
         </BrowserRouter>
       </Paper>
