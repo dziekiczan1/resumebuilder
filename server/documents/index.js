@@ -12,14 +12,21 @@ module.exports = ({ resume, workexp, education, extra }) => {
       <style>
         body{
           font-family: Arial;
+          font-size: 0.7rem;
         }
         .section-container {
           padding: 0 2rem;
-          margin-top: 1rem;
+          margin-top: 0.5rem;
         }
   
         .profile-info-heading {
           font-size: 3rem;
+          font-weight: 600;
+          margin-top: 1rem;
+        }
+
+        .education-info-heading{
+          margin-top: 0.8rem;
           font-weight: 600;
         }
   
@@ -29,25 +36,20 @@ module.exports = ({ resume, workexp, education, extra }) => {
         }
   
         .info-data {
-          width: 35%;
+          width: 40%;
         }
 
         .info-details{
-          width: 65%;
+          width: 60%;
           padding-right: 4rem;
         }
 
         .info-details-field{
-          font-size: 0.8rem;
-          font-style: italic;
-        }
-
-        .info-details-field-desc{
-          font-size: 0.9rem;
+          font-size: 0.6rem;
         }
 
         .mb{
-          margin-bottom: 1rem;
+          margin-bottom: 0.5rem;
         }
 
         .extrainfo-field{
@@ -62,18 +64,23 @@ module.exports = ({ resume, workexp, education, extra }) => {
           margin-top: 1.5rem;
           padding: 0 2rem;
           text-align: center;
-          font-size: 0.6rem;
+          font-size: 0.5rem;
           font-style: italic;
+        }
+
+        p{
+          padding-left: 0.2rem;
+          margin-bottom: 0.4rem;
         }
 
       </style>
     </head>
   
     <body>
-      <div class="container">
+      <div>
         <div class="section-container">
           <h1 class="profile-info-heading">${pInfo.name} ${pInfo.surname}</h1>
-          <hr style="width: 85%" />
+          <hr style="width: 90%" />
           <div class="info-container">
             <div class="info-data">
               <p>Mobile:</p>
@@ -93,7 +100,7 @@ module.exports = ({ resume, workexp, education, extra }) => {
         </div>
         <div class="section-container">
           <h2 class="education-info-heading">Education</h2>
-          <hr style="width: 85%" />
+          <hr style="width: 90%" />
             ${educationExp
               .map((school) => {
                 const yBegin = school.yearstart.split("-").reverse().join("-");
@@ -104,9 +111,9 @@ module.exports = ({ resume, workexp, education, extra }) => {
                 <p>${yBegin} - ${yEnd}</p>
               </div>
               <div class="info-details mb">
-                <p>${school.school}</p>
+                <p><b>${school.school}</b></p>
                 <p class="info-details-field"><b>Field of study:</b> ${school.fieldOfStudy}</p>
-                <p class="info-details-field-desc">${school.description}</p>
+                <p class="info-details-field">${school.description}</p>
               </div>
             </div>
             `;
@@ -115,7 +122,7 @@ module.exports = ({ resume, workexp, education, extra }) => {
         </div>
         <div class="section-container">
           <h2 class="education-info-heading">Work Experiance</h2>
-          <hr style="width: 85%" />
+          <hr style="width: 90%" />
           ${wExp
             .map((work) => {
               const yBegin = work.yearstart.split("-").reverse().join("-");
@@ -126,9 +133,9 @@ module.exports = ({ resume, workexp, education, extra }) => {
               <p>${yBegin} - ${yEnd}</p>
             </div>
             <div class="info-details mb">
-              <p>${work.company}</p>
+              <p><b>${work.company}</b></p>
               <p class="info-details-field"><b>Position:</b> ${work.position}</p>
-              <p class="info-details-field-desc">${work.description}</p>
+              <p class="info-details-field">${work.description}</p>
             </div>
           </div>
           `;
@@ -137,7 +144,7 @@ module.exports = ({ resume, workexp, education, extra }) => {
        </div>
        <div class="section-container">
           <h2 class="education-info-heading">Additional information</h2>
-          <hr style="width: 85%" />
+          <hr style="width: 90%" />
           <div class="info-container">
             <div class="info-data">
               <p>Languages:</p>
@@ -147,27 +154,36 @@ module.exports = ({ resume, workexp, education, extra }) => {
             </div>
             <div class="info-details">
               <div class="extrainfo-field">
-                ${additionalInfo.language.map((lang) => {
-                  return `<p>${lang}</p>`;
-                })}
+                ${additionalInfo.language
+                  .map((lang) => {
+                    return `<p>${lang}</p>`;
+                  })
+                  .join(", ")}
               </div>
               <div class="extrainfo-field">
-                ${additionalInfo.techstack.map((tech) => {
-                  return `<p>${tech}</p>`;
-                })}
+                ${additionalInfo.techstack
+                  .map((tech) => {
+                    return `<p>${tech}</p>`;
+                  })
+                  .join(", ")}
               </div>
               <div class="extrainfo-field">
-                ${additionalInfo.hobbies.map((hobby) => {
-                  return `<p>${hobby}</p> `;
-                })}
+                ${additionalInfo.hobbies
+                  .map((hobby) => {
+                    return `<p>${hobby}</p>`;
+                  })
+                  .join(", ")}
               </div>
               <div class="extrainfo-field">
-                ${additionalInfo.other.map((oth) => {
-                  return `<p>${oth}</p>`;
-                })}
+                ${additionalInfo.other
+                  .map((oth) => {
+                    return `<p>${oth}</p>`;
+                  })
+                  .join(", ")}
               </div>
             </div>
           </div>
+          <hr style="width: 90%" />
         </div>
         <div class="footer"><p>I agree to the processing of personal data provided in this document for realizing the recruitment process
         pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in

@@ -13,6 +13,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.get("/", (req, res) => {
+  res.send("Its working");
+});
+
 app.post("/resume-createpdf", (req, res) => {
   pdf.create(resumeTemplate(req.body), {}).toFile("Resume.pdf", (err) => {
     if (err) {

@@ -17,9 +17,9 @@ const Success = () => {
     const data = dataInfo;
 
     axios
-      .post("http://localhost:5000/resume-createpdf", data)
+      .post("https://createresumex.herokuapp.com/resume-createpdf", data)
       .then(() =>
-        axios.get("http://localhost:5000/resume-fetchpdf", {
+        axios.get("https://createresumex.herokuapp.com/resume-fetchpdf", {
           responseType: "blob",
         })
       )
