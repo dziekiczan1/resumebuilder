@@ -2,7 +2,7 @@
 
 ### [Live Site](https://createresumex.netlify.app/)
 
-![Resume Builder](https://piotr.rzadkowolski.dev/assets/proj13.jpg)
+![Resume Builder](https://piotr.rzadkowolski.dev/assets/proj13.webp)
 
 ## Introduction
 This is a code repository for the **Resume Builder** project
